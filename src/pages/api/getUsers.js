@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         res.status(200).json({users })
 
     }else{
-      res.status(404).json("not valid request")  
+      res.status(400).json("not valid request")  
     }
   }
   
