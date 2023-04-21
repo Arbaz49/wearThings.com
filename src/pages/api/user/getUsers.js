@@ -1,5 +1,5 @@
 import User from "@/models/user";
-import connectDB from "../../utils/connectDb"
+import connectDB from "../../../utils/connectDb"
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 

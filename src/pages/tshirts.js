@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-
-const Tshirts = () => {
+import Product from "@/models/product";
+import connectDB from "../utils/connectDb";
+const Tshirts = ({products}) => {
+  console.log(products)
   return (
     <div>
       <Head>
@@ -16,8 +18,8 @@ Buy-tshirts
       <section className="text-gray-600 body-font flex justify-center m-auto">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4 justify-center">
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -35,8 +37,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -54,8 +56,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>{" "}
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -73,8 +75,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>{" "}
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -92,8 +94,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>{" "}
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -111,8 +113,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>{" "}
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -130,8 +132,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>{" "}
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -149,8 +151,8 @@ Buy-tshirts
                 <p className="text-black capitalize">s,m,l,xl,xxl</p>
               </div>
             </Link>
-            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-full shadow-xl mt-2 cursor-pointer">
-              <a className="block relative  rounded overflow-hidden">
+            <Link href={"/product/product name"} className="m-3 lg:w-1/4 md:w-1/2 p-4 w-96 shadow-xl mt-2 cursor-pointer">
+              <a className="relative  rounded overflow-hidden">
                 <img 
                   alt="ecommerce"
                   className="h-[36vh] m-auto  block"
@@ -174,5 +176,13 @@ Buy-tshirts
     </div>
   );
 };
-
+export async function getServerSideProps(context) {
+  await connectDB();
+  let products=await Product.find();
+  console.log(products)
+let productsCopy=JSON.parse(JSON.stringify(products));
+  return {
+    props: {products:productsCopy}, // will be passed to the page component as props
+  }
+}
 export default Tshirts;
