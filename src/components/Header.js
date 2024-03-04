@@ -13,9 +13,9 @@ const Header = () => {
     </Link>
     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">T-shirts</Link>
-      <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Second Link</Link>
-      <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Third Link</Link>
-      <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Fourth Link</Link>
+      <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Hoodies</Link>
+      <Link href={"/tshirts"} className="mr-5 hover:text-gray-900 cursor-pointer">Mugs</Link>
+      <Link href={"/about"} className="mr-5 hover:text-gray-900 cursor-pointer">About Us</Link>
     </nav>
     <span className="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-white mt-4 md:mt-0">
     <CartDrawer/>

@@ -39,6 +39,8 @@ const decreaseQuantity=()=>{
   const handleClick = () => {};
  const handleClear=()=>{
   setState({ ...state, ["right"]: false });
+  setQuantity(0);
+
  }
 
   return (
@@ -68,16 +70,18 @@ const decreaseQuantity=()=>{
             <div className="bg-pink-400 h-full">
             <h2 className="text-center font-bold text-3xl">Cart</h2>
               <img
-                width={"100px"}
+                width={"50px"}
+                height={"50px"}
+                style={{borderRadius:"50%"}}
                 className="m-auto"
-                height={"100px"}
+                // height={"100px"}
                 src="https://rukminim1.flixcart.com/image/612/612/xif0q/t-shirt/9/1/o/m-db1024-42-3bros-original-imagz8zkvwjtayrs.jpeg?q=70"
                 alt="test"
               />
 
               <div className="info m-3 flex align-middle  justify-between" style={{alignItems:"center"}}>
               <Badge
-              badgeContent={4}
+              badgeContent={quantity}
               className="text-pink-500"
               color="secondary"
               style={{ color: "pink" }}
